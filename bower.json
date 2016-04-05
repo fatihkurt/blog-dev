@@ -1,0 +1,9 @@
+{
+	"name": "Package Name",
+	"version": "0.0.1",
+	"dependencies": {
+		"jquery": "latest",
+		"modernizr": "latest",
+		"normalize-scss": "latest"
+	}
+}

@@ -1,0 +1,41 @@
+{
+  "name": "blog-app",
+  "version": "1.0.0",
+  "description": "Sample blog app",
+  "main": "index.js",
+  "devDependencies": {
+    "browserify": "~11.2.0",
+    "browserify-shim": "^3.8.12",
+    "grunt": "^1.0.0",
+    "grunt-bower-install": "^1.6.0",
+    "grunt-bower-task": "0.4.0",
+    "grunt-browserify": "4.0.1"
+  },
+  "browser": {
+    "jquery": "./web/vendor/bower_components/jquery/jquery.js",
+    "modernizr": "./web/vendor/bower_components/modernizr/src/Modernizr.js"
+  },
+  "browserify-shim": {
+    "jquery": "$",
+    "modernizr": "Modernizr"
+  },
+  "browserify": {
+    "transform": ["browserify-shim"]
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fatihkurt/blog-dev.git"
+  },
+  "author": "fth <kurt.fth@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fatihkurt/blog-dev/issues"
+  },
+  "homepage": "https://github.com/fatihkurt/blog-dev#readme"
+}
