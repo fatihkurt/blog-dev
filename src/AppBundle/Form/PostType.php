@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class PostType extends AbstractType
 {
@@ -20,7 +21,7 @@ class PostType extends AbstractType
             ->add('summary')
             ->add('content')
             ->add('authorEmail')
-            ->add('publishedAt', 'datetime')
+            ->add('publishedAt', DateTimeType::class)
         ;
     }
     

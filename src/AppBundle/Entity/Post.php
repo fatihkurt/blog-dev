@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * @ORM\Entity
  * @ORM\Table(name="post")
  *
  * Defines the properties of the Post entity to represent the blog posts.
