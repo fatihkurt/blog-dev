@@ -5,7 +5,6 @@ module.exports = function(grunt) {
 			install: {
 				options: {
 					targetDir: 'web/vendor/bower_components',
-					layout: 'byComponent',
 					verbose: true,
 					cleanup: true
 				}
@@ -19,12 +18,25 @@ module.exports = function(grunt) {
 				src: 'frontend/src/app.js',
 				dest: 'web/build/app.js'
 			}
-		}
+		},
+		less: {
+            production: {
+                options: {
+                    paths: ['web/build/'],
+                    cleancss: true
+                },
+                files: {
+                    'web/build/main.css': 'frontend/src/less/main.less'
+                }
+            }
+        }
 	});
 
 	grunt.loadNpmTasks('grunt-bower-task');
 
 	grunt.loadNpmTasks('grunt-browserify');
 
-	grunt.registerTask('default', ['bower:install', 'browserify']);
+	grunt.loadNpmTasks('grunt-contrib-less');
+
+	grunt.registerTask('default', ['bower:install', 'browserify', 'less']);
 }

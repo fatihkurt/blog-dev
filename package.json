@@ -9,18 +9,27 @@
     "grunt": "^1.0.0",
     "grunt-bower-install": "^1.6.0",
     "grunt-bower-task": "0.4.0",
-    "grunt-browserify": "4.0.1"
+    "grunt-browserify": "4.0.1",
+    "grunt-contrib-less": "^1.2.0"
   },
   "browser": {
-    "jquery": "./web/vendor/bower_components/jquery/jquery.js",
-    "modernizr": "./web/vendor/bower_components/modernizr/src/Modernizr.js"
+    "jquery": "./web/vendor/bower_components/jquery/dist/jquery.js",
+    "modernizr": "./web/vendor/bower_components/modernizr/src/Modernizr.js",
+    "bootstrap": "./web/vendor/bower_components/bootstrap/dist/js/bootstrap.js"
   },
   "browserify-shim": {
     "jquery": "$",
-    "modernizr": "Modernizr"
+    "modernizr": "Modernizr",
+    "bootstrap": {
+      "depends": [
+        "jquery:$"
+      ]
+    }
   },
   "browserify": {
-    "transform": ["browserify-shim"]
+    "transform": [
+      "browserify-shim"
+    ]
   },
   "directories": {
     "test": "tests"
