@@ -4,7 +4,7 @@
     {% for post in posts %}
           {% include "blocks/post_content.twig" %}
     {% endfor %}
-        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        {% if is_granted("ROLE_ADMIN") %}
           <nav>
             <ul class="pager">
               <li><a href="{{ path('post_new') }}">Create</a></li>

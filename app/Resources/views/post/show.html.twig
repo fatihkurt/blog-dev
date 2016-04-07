@@ -2,11 +2,11 @@
 
 {% block body %}
     {% include "blocks/post_content.twig" %}
-
     <ul>
         <li>
             <a href="{{ path('post_index') }}">Back to the list</a>
         </li>
+        {% if is_granted("ROLE_ADMIN") %}
         <li>
             <a href="{{ path('post_edit', { 'id': post.id }) }}">Edit</a>
         </li>
@@ -15,5 +15,6 @@
                 <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
+        {% endif %}
     </ul>
 {% endblock %}
