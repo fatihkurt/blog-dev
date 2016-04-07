@@ -14,7 +14,11 @@
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
-/web/vendor/
-/web/build/
+!/web/build
+/web/build/*
 /node_modules/
+!/frontend/bower_components
+/frontend/bower_components/*
+!/web/lib
+/web/lib/*
 composer.lock

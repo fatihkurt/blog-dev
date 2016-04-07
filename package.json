@@ -7,16 +7,15 @@
     "browserify": "~11.2.0",
     "browserify-shim": "^3.8.12",
     "grunt": "^1.0.0",
-    "grunt-bower-install": "^1.6.0",
     "grunt-bower-task": "0.4.0",
     "grunt-browserify": "4.0.1",
     "grunt-contrib-less": "^1.2.0",
     "grunt-contrib-uglify": "^1.0.1"
   },
   "browser": {
-    "jquery": "./web/vendor/bower_components/jquery/dist/jquery.js",
-    "modernizr": "./web/vendor/bower_components/modernizr/src/Modernizr.js",
-    "bootstrap": "./web/vendor/bower_components/bootstrap/dist/js/bootstrap.js"
+    "jquery": "./web/lib/jquery/jquery.js",
+    "modernizr": "./web/lib/modernizr/src/Modernizr.js",
+    "bootstrap": "./web/lib/bootstrap/bootstrap.js"
   },
   "browserify-shim": {
     "jquery": "$",
