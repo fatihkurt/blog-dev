@@ -64,10 +64,30 @@ class PostController extends Controller
     /**
      * Finds and displays a Post entity.
      *
-     * @Route("/post/{id}", name="post_show")
+     * @Route("/post/{slug}", name="post_show")
      * @Method("GET")
      */
-    public function showAction(Post $post)
+    public function showAction($slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $post = $em->getRepository('AppBundle:Post')->findOneBy(['slug' => $slug]);
+
+        $deleteForm = $this->createDeleteForm($post);
+
+        return $this->render('post/show.html.twig', array(
+            'post' => $post,
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+     * Finds and displays a Post entity.
+     *
+     * @Route("/post/{id}", name="post_show_id")
+     * @Method("GET")
+     */
+    public function showByIdAction(Post $post)
     {
         $deleteForm = $this->createDeleteForm($post);
 
