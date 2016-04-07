@@ -1,0 +1,9 @@
+<div class="blog-post">
+    <h2 class="blog-post-title"><td><a href="{{ path('post_show', { 'id': post.id }) }}">{{ post.title }}</a></td></h2>
+    <p class="blog-post-meta">{% if post.publishedAt %}{{ post.publishedAt|date('Y-m-d H:i:s') }} by{% endif %} <a href="#">{{ post.authorEmail }}</a> 
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %} | <a href="{{ path('post_edit', { 'id': post.id }) }}">edit</a>{% endif %}</p>
+
+    <p>{{ post.summary }}</p>
+    <hr>
+    {{ post.content|raw }}
+  </div><!-- /.blog-post -->

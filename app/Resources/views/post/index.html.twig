@@ -2,24 +2,14 @@
 
 {% block body %}
     {% for post in posts %}
-          <div class="blog-post">
-            <h2 class="blog-post-title"><td><a href="{{ path('post_show', { 'id': post.id }) }}">{{ post.title }}</a></td></h2>
-            <p class="blog-post-meta">{% if post.publishedAt %}{{ post.publishedAt|date('Y-m-d H:i:s') }} by{% endif %} <a href="#">{{ post.authorEmail }}</a><a href="{{ path('post_edit', { 'id': post.id }) }}">edit</a></p>
-
-            <p>{{ post.summary }}</p>
-            <hr>
-            {{ post.content|raw }}
-          </div><!-- /.blog-post -->
+          {% include "blocks/post_content.twig" %}
     {% endfor %}
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
           <nav>
             <ul class="pager">
-              <li><a href="#">Previous</a></li>
-              <li><a href="#">Next</a></li>
               <li><a href="{{ path('post_new') }}">Create</a></li>
             </ul>
           </nav>
-
+        {% endif %}
         </div><!-- /.blog-main -->
-    
 {% endblock %}
-

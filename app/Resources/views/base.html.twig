@@ -32,6 +32,14 @@
       <div class="container">
         <nav class="blog-nav">
           <a class="blog-nav-item active" href="/app_dev.php">Home</a>
+
+          {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <a class="blog-nav-item pull-right" href="{{ path('fos_user_security_logout') }}">
+                    {{ 'Wellcome'|trans }} {{app.user.username}} | {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            {% else %}
+                <a class="blog-nav-item pull-right" href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+            {% endif %}
         </nav>
       </div>
     </div>
@@ -39,7 +47,7 @@
     <div class="container">
 
       <div class="blog-header">
-        <h1 class="blog-title">Blog App</h1>
+        <h1 class="blog-title">{{ page_title }}</h1>
         <p class="lead blog-description"></p>
       </div>
 

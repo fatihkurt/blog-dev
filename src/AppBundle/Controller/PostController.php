@@ -12,14 +12,15 @@ use AppBundle\Form\PostType;
 /**
  * Post controller.
  *
- * @Route("/post")
  */
 class PostController extends Controller
 {
+
     /**
      * Lists all Post entities.
      *
      * @Route("/", name="post_index")
+     * @Route("/post/", name="post_index2")
      * @Method("GET")
      */
     public function indexAction()
@@ -30,13 +31,14 @@ class PostController extends Controller
 
         return $this->render('post/index.html.twig', array(
             'posts' => $posts,
+            'page_title' => 'Blog App'
         ));
     }
 
     /**
      * Creates a new Post entity.
      *
-     * @Route("/new", name="post_new")
+     * @Route("/post/new", name="post_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -62,7 +64,7 @@ class PostController extends Controller
     /**
      * Finds and displays a Post entity.
      *
-     * @Route("/{id}", name="post_show")
+     * @Route("/post/{id}", name="post_show")
      * @Method("GET")
      */
     public function showAction(Post $post)
@@ -78,7 +80,7 @@ class PostController extends Controller
     /**
      * Displays a form to edit an existing Post entity.
      *
-     * @Route("/{id}/edit", name="post_edit")
+     * @Route("/post/{id}/edit", name="post_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Post $post)
@@ -105,7 +107,7 @@ class PostController extends Controller
     /**
      * Deletes a Post entity.
      *
-     * @Route("/{id}", name="post_delete")
+     * @Route("/post/{id}", name="post_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Post $post)
