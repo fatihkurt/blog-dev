@@ -44,19 +44,19 @@ class PostController extends Controller
     public function newAction(Request $request)
     {
 
-        // Role check
-        $this->denyAccessUnlessGranted('delete', $post);
-
         $post = new Post();
         $form = $this->createForm('AppBundle\Form\PostType', $post);
         $form->handleRequest($request);
+
+        // Role check
+        $this->denyAccessUnlessGranted('create', $post);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($post);
             $em->flush();
 
-            return $this->redirectToRoute('post_show', array('id' => $post->getId()));
+            return $this->redirectToRoute('post_show', array('slug' => $post->getSlug()));
         }
 
         return $this->render('post/new.html.twig', array(
@@ -160,7 +160,7 @@ class PostController extends Controller
         }
 
         // Role or same user check
-        $this->denyAccessUnlessGranted('delete', $post);
+        $this->denyAccessUnlessGranted('edit', $post);
 
         $form = $this->createDeleteForm($post);
         $form->handleRequest($request);
