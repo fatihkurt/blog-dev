@@ -43,6 +43,10 @@ class PostController extends Controller
      */
     public function newAction(Request $request)
     {
+
+        // Role check
+        $this->denyAccessUnlessGranted('delete', $post);
+
         $post = new Post();
         $form = $this->createForm('AppBundle\Form\PostType', $post);
         $form->handleRequest($request);
@@ -73,6 +77,10 @@ class PostController extends Controller
 
         $post = $em->getRepository('AppBundle:Post')->findOneBy(['slug' => $slug]);
 
+        if (!$post) {
+            throw $this->createNotFoundException();
+        }
+
         $deleteForm = $this->createDeleteForm($post);
 
         return $this->render('post/show.html.twig', array(
@@ -89,6 +97,10 @@ class PostController extends Controller
      */
     public function showByIdAction(Post $post)
     {
+        if (!$post) {
+            throw $this->createNotFoundException();
+        }
+
         $deleteForm = $this->createDeleteForm($post);
 
         return $this->render('post/show.html.twig', array(
@@ -105,6 +117,15 @@ class PostController extends Controller
      */
     public function editAction(Request $request, Post $post)
     {
+
+        // Not found exception
+        if (!$post) {
+            throw $this->createNotFoundException();
+        }
+
+        // Role or same user check
+        $this->denyAccessUnlessGranted('edit', $post);
+
         $deleteForm = $this->createDeleteForm($post);
         $editForm = $this->createForm('AppBundle\Form\PostType', $post);
         $editForm->handleRequest($request);
@@ -132,6 +153,15 @@ class PostController extends Controller
      */
     public function deleteAction(Request $request, Post $post)
     {
+
+        // Not found exception
+        if (!$post) {
+            throw $this->createNotFoundException();
+        }
+
+        // Role or same user check
+        $this->denyAccessUnlessGranted('delete', $post);
+
         $form = $this->createDeleteForm($post);
         $form->handleRequest($request);
 
