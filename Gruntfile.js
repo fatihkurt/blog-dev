@@ -11,12 +11,15 @@ module.exports = function(grunt) {
 			}
 		},
 		browserify: {
-			main: {
-				options: {
-					debug: true
-				},
-				src: 'frontend/src/app.js',
-				dest: 'web/build/app.js'
+			app: {
+				files : { 'web/build/app.js' : ['frontend/src/app.js'] }
+			}
+		},
+		uglify: {
+			build_target: {
+				files: {
+					'web/build/app.min.js': ['web/build/app.js']
+				}
 			}
 		},
 		less: {
@@ -38,5 +41,7 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks('grunt-contrib-less');
 
-	grunt.registerTask('default', ['bower:install', 'browserify', 'less']);
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+
+	grunt.registerTask('default', ['bower:install', 'browserify', 'less', 'uglify']);
 }

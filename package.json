@@ -10,7 +10,8 @@
     "grunt-bower-install": "^1.6.0",
     "grunt-bower-task": "0.4.0",
     "grunt-browserify": "4.0.1",
-    "grunt-contrib-less": "^1.2.0"
+    "grunt-contrib-less": "^1.2.0",
+    "grunt-contrib-uglify": "^1.0.1"
   },
   "browser": {
     "jquery": "./web/vendor/bower_components/jquery/dist/jquery.js",
