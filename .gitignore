@@ -15,4 +15,6 @@
 /vendor/
 /web/bundles/
 /web/vendor/
+/web/build/
 /node_modules/
+composer.lock

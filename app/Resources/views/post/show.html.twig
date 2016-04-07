@@ -1,40 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Post</h1>
+    <div class="blog-post">
+    <h2 class="blog-post-title"><td><a href="{{ path('post_show', { 'id': post.id }) }}">{{ post.title }}</a></td></h2>
+    <p class="blog-post-meta">{% if post.publishedAt %}{{ post.publishedAt|date('Y-m-d H:i:s') }} by{% endif %} <a href="#">{{ post.authorEmail }}</a><a href="{{ path('post_edit', { 'id': post.id }) }}">edit</a></p>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ post.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ post.title }}</td>
-            </tr>
-            <tr>
-                <th>Slug</th>
-                <td>{{ post.slug }}</td>
-            </tr>
-            <tr>
-                <th>Summary</th>
-                <td>{{ post.summary }}</td>
-            </tr>
-            <tr>
-                <th>Content</th>
-                <td>{{ post.content }}</td>
-            </tr>
-            <tr>
-                <th>Authoremail</th>
-                <td>{{ post.authorEmail }}</td>
-            </tr>
-            <tr>
-                <th>Publishedat</th>
-                <td>{% if post.publishedAt %}{{ post.publishedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
+    <p>{{ post.summary }}</p>
+    <hr>
+    {{ post.content|raw }}
+  </div><!-- /.blog-post -->
 
     <ul>
         <li>
